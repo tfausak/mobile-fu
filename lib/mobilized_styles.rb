@@ -26,10 +26,8 @@ module MobilizedStyles
 
   def user_agent_device_name
     @user_agent_device_name ||= begin
-
-      ua = request.user_agent
-      return nil if ua.nil?
-      ua.downcase!
+    
+      ua = request.user_agent.to_s.downcase
 
       if ua.index('mobileexplorer') || ua.index('windows ce')
         'mobileexplorer'
